@@ -1,8 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.ReadBook" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Định nghĩa màu cho thanh Toolbar trong chế độ sáng -->
+        <item name="android:toolbarStyle">@style/ToolbarStyle.Light</item>
     </style>
 
     <style name="Theme.ReadBook" parent="Base.Theme.ReadBook" />

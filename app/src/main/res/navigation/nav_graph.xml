@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/browse_fragment">
+
+    <fragment
+        android:id="@+id/explore_fragment"
+        android:name="com.example.readbook.ui.explore.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore">
+<!--        <action-->
+<!--            android:id="@+id/browse_fragment_to_details"-->
+<!--            app:destination="@id/details_fragment" />-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/library_fragment"
+        android:name="com.example.readbook.ui.library.LibraryFragment"
+        android:label="fragment_library"
+        tools:layout="@layout/fragment_library"
+        >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/bookmarks_fragment"
+        android:name="com.example.readbook.ui.bookmarks.BookmarksFragment"
+        android:label="fragment_bookmarks"
+        tools:layout="@layout/fragment_bookmarks"
+        >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/browse_fragment"
+        android:name="com.example.readbook.ui.browse.BrowseFragment"
+        android:label="fragment_browse"
+        tools:layout="@layout/fragment_browse"
+        >
+
+    </fragment>
+
+
+
+</navigation>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Thêm các thuộc tính cho Toolbar trong chế độ sáng -->
+    <style name="ToolbarStyle.Light" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/white</item>
+        <!-- Thêm các thuộc tính khác nếu cần -->
+    </style>
+
+    <!-- Thêm các thuộc tính cho Toolbar trong chế độ tối -->
+    <style name="ToolbarStyle.Dark" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@color/black</item>
+        <!-- Thêm các thuộc tính khác nếu cần -->
+    </style>
+</resources>
