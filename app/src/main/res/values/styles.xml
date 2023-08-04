@@ -11,4 +11,9 @@
         <item name="android:background">@color/black</item>
         <!-- Thêm các thuộc tính khác nếu cần -->
     </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Thêm dòng sau để đổi màu StatusBar -->
+        <item name="android:statusBarColor">@color/statusBarColor</item>
+    </style>
 </resources>

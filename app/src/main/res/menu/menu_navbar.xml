@@ -9,7 +9,8 @@
     <item
         android:id="@+id/explore_fragment"
         android:icon="@drawable/ic_explore"
-        android:title="@string/nav_explore" />
+        android:title="@string/nav_explore"
+        />
 
     <item
         android:id="@+id/bookmarks_fragment"

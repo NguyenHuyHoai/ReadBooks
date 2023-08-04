@@ -3,16 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@+id/browse_fragment">
+    app:startDestination="@+id/explore_fragment">
 
     <fragment
         android:id="@+id/explore_fragment"
         android:name="com.example.readbook.ui.explore.ExploreFragment"
         android:label="fragment_explore"
         tools:layout="@layout/fragment_explore">
-<!--        <action-->
-<!--            android:id="@+id/browse_fragment_to_details"-->
-<!--            app:destination="@id/details_fragment" />-->
+        <action
+            android:id="@+id/action_explore_fragment_to_detail_fragment"
+            app:destination="@id/detail_fragment" />
+        <action
+            android:id="@+id/action_explore_fragment_to_search_fragment"
+            app:destination="@id/search_fragment" />
+        <action
+            android:id="@+id/action_explore_fragment_to_listbook_fragment"
+            app:destination="@id/listbook_fragment" />
     </fragment>
 
     <fragment
@@ -42,6 +48,47 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/detail_fragment"
+        android:name="com.example.readbook.ui.detail.Detail"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail"
+        >
 
+    </fragment>
+
+    <fragment
+        android:id="@+id/search_fragment"
+        android:name="com.example.readbook.ui.search.Search"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search"
+        >
+
+        <action
+            android:id="@+id/action_search_fragment_to_detail_fragment"
+            app:destination="@id/detail_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/filter_fragment"
+        android:name="com.example.readbook.ui.filter.Filter"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter"
+        >
+        <action
+            android:id="@+id/action_filter_fragment_to_listbook_fragment2"
+            app:destination="@id/listbook_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/listbook_fragment"
+        android:name="com.example.readbook.ui.list.ListBook"
+        android:label="fragment_listbook"
+        tools:layout="@layout/fragment_list_book"
+        >
+        <action
+            android:id="@+id/action_listbook_fragment_to_filter_fragment"
+            app:destination="@id/filter_fragment" />
+    </fragment>
 
 </navigation>
