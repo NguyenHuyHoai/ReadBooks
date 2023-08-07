@@ -14,11 +14,11 @@
             android:id="@+id/action_explore_fragment_to_detail_fragment"
             app:destination="@id/detail_fragment" />
         <action
-            android:id="@+id/action_explore_fragment_to_search_fragment"
-            app:destination="@id/search_fragment" />
-        <action
             android:id="@+id/action_explore_fragment_to_listbook_fragment"
             app:destination="@id/listbook_fragment" />
+        <action
+            android:id="@+id/action_explore_fragment_to_search_fragment"
+            app:destination="@id/search_fragment" />
     </fragment>
 
     <fragment
@@ -28,6 +28,9 @@
         tools:layout="@layout/fragment_library"
         >
 
+        <action
+            android:id="@+id/action_library_fragment_to_detail_fragment"
+            app:destination="@id/detail_fragment" />
     </fragment>
 
     <fragment
@@ -37,6 +40,9 @@
         tools:layout="@layout/fragment_bookmarks"
         >
 
+        <action
+            android:id="@+id/action_bookmarks_fragment_to_detail_fragment"
+            app:destination="@id/detail_fragment" />
     </fragment>
 
     <fragment
@@ -53,21 +59,8 @@
         android:name="com.example.readbook.ui.detail.Detail"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail"
-        >
+        />
 
-    </fragment>
-
-    <fragment
-        android:id="@+id/search_fragment"
-        android:name="com.example.readbook.ui.search.Search"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search"
-        >
-
-        <action
-            android:id="@+id/action_search_fragment_to_detail_fragment"
-            app:destination="@id/detail_fragment" />
-    </fragment>
 
     <fragment
         android:id="@+id/filter_fragment"
@@ -90,5 +83,26 @@
             android:id="@+id/action_listbook_fragment_to_filter_fragment"
             app:destination="@id/filter_fragment" />
     </fragment>
+
+    <activity
+        android:id="@+id/chapters_activity"
+        android:name="com.example.readbook.ui.chapter.Chapters"
+        android:label="activity_chapters"
+        tools:layout="@layout/activity_chapters"
+        >
+    </activity>
+
+    <fragment
+        android:id="@+id/search_fragment"
+        android:name="com.example.readbook.ui.search.Search"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search"
+        >
+
+        <action
+            android:id="@+id/action_search_fragment_to_detail_fragment"
+            app:destination="@id/detail_fragment" />
+    </fragment>
+
 
 </navigation>

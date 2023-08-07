@@ -22,14 +22,12 @@ import com.example.readbook.ui.explore.ExploreFragment;
 import com.example.readbook.ui.library.LibraryFragment;
 
 public class MainActivity extends AppCompatActivity {
-    private boolean isConnected = false;
     private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
-//        AppCompatDelegate.setDefaultNightMode(Ranobe.getThemeMode(getApplicationContext()));
         setContentView(binding.getRoot());
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupWithNavController(binding.navbar, navController);

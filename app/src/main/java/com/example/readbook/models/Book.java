@@ -4,24 +4,25 @@ import com.google.firebase.Timestamp;
 import java.util.List;
 
 public class Book {
-    private String booksId;
-    private String title;
-    private String author;
-    private String description;
-    private List<String> genres;
-    private float rating;
-    private int ratingsCount;
-    private int viewsCount;
-    private String imageBook;
-    private Timestamp creationTimestamp;
-    private List<String> chapter;
+    public String booksId;
+    public String title;
+    public String author;
+    public String description;
+    public List<String> genres;
+    public float rating;
+    public int ratingsCount;
+    public int viewsCount;
+    public String imageBook;
+    public String coverImage;
+    public Timestamp creationTimestamp;
+    public List<String> chapter;
 
     public Book() {
         // Hàm tạo không tham số, không cần thực hiện bất kỳ hành động gì
     }
 
     public Book(String booksId, String title, String author, String description, List<String> genres,
-                float rating, int ratingsCount, int viewsCount, String imageBook,
+                float rating, int ratingsCount, int viewsCount, String imageBook, String coverImage,
                 Timestamp creationTimestamp, List<String> chapter) {
         this.booksId = booksId;
         this.title = title;
@@ -32,6 +33,7 @@ public class Book {
         this.ratingsCount = ratingsCount;
         this.viewsCount = viewsCount;
         this.imageBook = imageBook;
+        this.coverImage = coverImage;
         this.creationTimestamp = creationTimestamp;
         this.chapter = chapter;
     }
@@ -122,5 +124,13 @@ public class Book {
 
     public void setChapter(List<String> chapter) {
         this.chapter = chapter;
+    }
+
+    public String getCoverImage() {
+        return coverImage;
+    }
+
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
     }
 }

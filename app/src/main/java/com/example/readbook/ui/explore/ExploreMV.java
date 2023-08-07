@@ -15,11 +15,14 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class ExploreMV extends ViewModel {
     private MutableLiveData<List<Book>> recentBooks;
     private MutableLiveData<List<Book>> trendingBooks;
+    private MutableLiveData<List<Book>> bannerBooks;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference booksRef =  db.collection("Books");
     public LiveData<List<Book>> getRecentBooksLiveData() {
@@ -28,7 +31,6 @@ public class ExploreMV extends ViewModel {
         }
         return recentBooks;
     }
-
     public LiveData<List<Book>> getTrendingBooksLiveData() {
         if (trendingBooks == null) {
             trendingBooks = new MutableLiveData<>();
@@ -36,7 +38,7 @@ public class ExploreMV extends ViewModel {
         return trendingBooks;
     }
     public void setRecentBooks() {
-        booksRef.orderBy("creationTimestamp", Query.Direction.DESCENDING).limit(5).get().addOnCompleteListener(task -> {
+        booksRef.orderBy("creationTimestamp", Query.Direction.DESCENDING).limit(6).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 List<Book> recentBooksList = new ArrayList<>();
                 for (QueryDocumentSnapshot document : task.getResult()) {
@@ -51,7 +53,7 @@ public class ExploreMV extends ViewModel {
     }
 
     public void setTrendingBooks() {
-            booksRef.orderBy("viewsCount", Query.Direction.DESCENDING).limit(5).get().addOnCompleteListener(task -> {
+            booksRef.orderBy("viewsCount", Query.Direction.DESCENDING).limit(6).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 List<Book> trendingBooksList = new ArrayList<>();
                 for (QueryDocumentSnapshot document : task.getResult()) {
@@ -61,6 +63,27 @@ public class ExploreMV extends ViewModel {
                     }
                 }
                 trendingBooks.setValue(trendingBooksList);
+            } else {
+                Log.d(TAG, "Error getting documents: ", task.getException());
+            }
+        });
+    }
+    public LiveData<List<Book>> getBannerBooksLiveData() {
+        if (bannerBooks == null) {
+            bannerBooks = new MutableLiveData<>();
+        }
+        return bannerBooks;
+    }
+    public void setBannerBooks() {
+        booksRef.limit(5).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                List<Book> bannerBooksList = new ArrayList<>();
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    Book book = document.toObject(Book.class);
+                    bannerBooksList.add(book);
+                }
+                Collections.shuffle(bannerBooksList); // Xáo trộn ngẫu nhiên danh sách sách
+                bannerBooks.setValue(bannerBooksList);
             } else {
                 Log.d(TAG, "Error getting documents: ", task.getException());
             }

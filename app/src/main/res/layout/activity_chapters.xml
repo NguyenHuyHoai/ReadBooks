@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:padding="10dp"
+            >
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/ic_home"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_home"
+                android:contentDescription="Hi"
+                android:background="@android:color/transparent"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnPreviousChapter"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="0dp"
+                android:layout_toEndOf="@+id/ic_home"
+                android:background="@drawable/button_enabled"
+                android:contentDescription="Hi"
+                android:src="@drawable/ic_btn_back" />
+
+            <TextView
+                android:id="@+id/tvChapterTitle"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="Chapter Title"
+                android:textSize="18sp"
+                android:layout_toEndOf="@+id/btnPreviousChapter"
+                android:gravity="center"
+                android:textStyle="bold"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnNextChapter"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_toEndOf="@+id/tvChapterTitle"
+                android:src="@drawable/ic_next"
+                android:contentDescription="Hi"
+                android:background="@drawable/button_enabled"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_setting"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_toEndOf="@+id/btnNextChapter"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="Hi"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_setting"
+                />
+
+        </RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvChapterContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:padding="16dp"
+                android:textSize="16sp"
+                android:hint="Nội dung"
+                android:background="@color/white"
+                />
+
+        </ScrollView>
+    </LinearLayout>
+</layout>
