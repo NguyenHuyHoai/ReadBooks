@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
@@ -32,6 +33,23 @@ public class SettingsFragment extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         FragmentSettingsBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_settings, container, false);
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            float currentTextSize = bundle.getFloat("textSize");
+            int currentTextColor = bundle.getInt("textColor");
+            int currentBackgroundColor = bundle.getInt("backgroundColor");
+
+            binding.radioSmall.setChecked(currentTextSize == 14);
+            binding.radioMedium.setChecked(currentTextSize == 16);
+            binding.radioLarge.setChecked(currentTextSize == 18);
+
+            binding.radioDark.setChecked(currentTextColor == ContextCompat.getColor(requireContext(), R.color.black) &&
+                    currentBackgroundColor == ContextCompat.getColor(requireContext(), R.color.white));
+            binding.radioLight.setChecked(currentTextColor == ContextCompat.getColor(requireContext(), R.color.white) &&
+                    currentBackgroundColor == ContextCompat.getColor(requireContext(), R.color.black));
+            binding.radioYellow.setChecked(currentBackgroundColor == ContextCompat.getColor(requireContext(), R.color.yellow));
+        }
 
         binding.radioSmall.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {

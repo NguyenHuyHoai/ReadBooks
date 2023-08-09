@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
@@ -133,13 +134,20 @@ public class Chapters extends AppCompatActivity {
         }
     }
 
-    // Phương thức để mở SettingsFragment
-//    private void openSettingsFragment() {
-//        SettingsFragment settingsFragment = new SettingsFragment();
-//        settingsFragment.show(getSupportFragmentManager(), settingsFragment.getTag());
-//    }
     private void openSettingsFragment() {
         SettingsFragment settingsFragment = new SettingsFragment();
+
+        int currentTextSize = (int) binding.tvChapterContent.getTextSize();
+        int currentTextColor = binding.tvChapterContent.getCurrentTextColor();
+        int currentBackgroundColor = ((ColorDrawable) binding.tvChapterContent.getBackground()).getColor();
+        float currentTextSizeSp = pxToSp((int) binding.tvChapterContent.getTextSize());
+
+        Bundle bundle = new Bundle();
+        bundle.putFloat("textSize", currentTextSizeSp);
+        bundle.putInt("textColor", currentTextColor);
+        bundle.putInt("backgroundColor", currentBackgroundColor);
+        settingsFragment.setArguments(bundle);
+
         settingsFragment.show(getSupportFragmentManager(), settingsFragment.getTag());
 
         settingsFragment.setOnSettingsChangeListener((textSize, textColorResId, bgColorResId) -> {
@@ -147,5 +155,10 @@ public class Chapters extends AppCompatActivity {
             binding.tvChapterContent.setTextColor(ContextCompat.getColor(this, textColorResId));
             binding.tvChapterContent.setBackgroundColor(ContextCompat.getColor(this, bgColorResId));
         });
+    }
+
+    private float pxToSp(float px) {
+        float scaledDensity = getResources().getDisplayMetrics().scaledDensity;
+        return px / scaledDensity;
     }
 }
