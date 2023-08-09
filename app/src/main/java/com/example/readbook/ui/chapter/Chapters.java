@@ -1,21 +1,20 @@
 package com.example.readbook.ui.chapter;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.example.readbook.R;
 import com.example.readbook.databinding.ActivityChaptersBinding;
 import com.example.readbook.models.Chapter;
-import com.example.readbook.models.ReaderTheme;
 import com.example.readbook.ui.chapter.settings.SettingsFragment;
-import com.example.readbook.ui.explore.ExploreFragment;
 import com.example.readbook.ui.main.MainActivity;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -92,15 +91,15 @@ public class Chapters extends AppCompatActivity {
 
     // Phương thức load nội dung chương từ file Word và hiển thị lên TextView
     private void loadChapterContent() {
-            if (currentChapter != null) {
-                new Thread(() -> {
-                    String content = readWordFile(currentChapter.getChaptersContent());
+        if (currentChapter != null) {
+            new Thread(() -> {
+                String content = readWordFile(currentChapter.getChaptersContent());
 
-                    // Hiển thị nội dung trong TextView
-                    runOnUiThread(() -> binding.tvChapterContent.setText(content));
-                }).start();
-            }
+                // Hiển thị nội dung trong TextView
+                runOnUiThread(() -> binding.tvChapterContent.setText(content));
+            }).start();
         }
+    }
     private String readWordFile(String fileUrl) {
         String content = "";
         try {
@@ -135,8 +134,18 @@ public class Chapters extends AppCompatActivity {
     }
 
     // Phương thức để mở SettingsFragment
+//    private void openSettingsFragment() {
+//        SettingsFragment settingsFragment = new SettingsFragment();
+//        settingsFragment.show(getSupportFragmentManager(), settingsFragment.getTag());
+//    }
     private void openSettingsFragment() {
         SettingsFragment settingsFragment = new SettingsFragment();
         settingsFragment.show(getSupportFragmentManager(), settingsFragment.getTag());
+
+        settingsFragment.setOnSettingsChangeListener((textSize, textColorResId, bgColorResId) -> {
+            binding.tvChapterContent.setTextSize(textSize);
+            binding.tvChapterContent.setTextColor(ContextCompat.getColor(this, textColorResId));
+            binding.tvChapterContent.setBackgroundColor(ContextCompat.getColor(this, bgColorResId));
+        });
     }
 }
