@@ -20,6 +20,13 @@
                     android:orientation="horizontal"
                     android:gravity="end">
 
+                    <TextView
+                        android:layout_width="280dp"
+                        android:layout_height="30dp"
+                        android:text="Trang chủ"
+                        android:textSize="20sp"
+                        />
+
                     <androidx.appcompat.widget.AppCompatButton
                         android:layout_width="50dp"
                         android:layout_height="wrap_content"

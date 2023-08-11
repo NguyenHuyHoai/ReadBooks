@@ -1,10 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".ui.browse.BrowseFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/b_while"
+        >
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tvIcon"
+            android:text="Hồ sơ"
+            android:textSize="20sp"
+            android:background="@color/white"
+            android:padding="@dimen/tenDP"
+            />
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/myInformation"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_setting"
+                android:drawableEnd="@drawable/ic_btn_next"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/tenDP"
+                android:text="Thông tin cá nhân"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/changePass"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_setting"
+                android:drawableEnd="@drawable/ic_btn_next"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/tenDP"
+                android:text="Đổi mật khẩu"
+                android:textAllCaps="false" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/exit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_setting"
+                android:drawableEnd="@drawable/ic_btn_next"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/tenDP"
+                android:text="Thoát"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

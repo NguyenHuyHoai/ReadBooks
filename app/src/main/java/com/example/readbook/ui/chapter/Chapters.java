@@ -69,7 +69,6 @@ public class Chapters extends AppCompatActivity {
                     binding.tvChapterTitle.setText(currentChapter.getChaptersName());
                     // Tính số chương tối đa
                     maxChapter = getMaxChapterNumber(currentChapter.getChaptersName());
-
                     Log.e("TỔNG SỐ CHƯƠNG", String.valueOf(maxChapter));
                     // Hiển thị nội dung chương hiện tại
                     loadChapterContent();
@@ -89,7 +88,6 @@ public class Chapters extends AppCompatActivity {
             return 0;
         }
     }
-
     // Phương thức load nội dung chương từ file Word và hiển thị lên TextView
     private void loadChapterContent() {
         if (currentChapter != null) {
@@ -108,10 +106,8 @@ public class Chapters extends AppCompatActivity {
             InputStream inputStream = url.openStream();
             XWPFDocument document = new XWPFDocument(inputStream);
             XWPFWordExtractor extractor = new XWPFWordExtractor(document);
-
             // Trích xuất nội dung từ tệp Word
             content = extractor.getText();
-
             // Đóng luồng đọc tệp
             inputStream.close();
         } catch (IOException e) {
@@ -156,7 +152,6 @@ public class Chapters extends AppCompatActivity {
             binding.tvChapterContent.setBackgroundColor(ContextCompat.getColor(this, bgColorResId));
         });
     }
-
     private float pxToSp(float px) {
         float scaledDensity = getResources().getDisplayMetrics().scaledDensity;
         return px / scaledDensity;

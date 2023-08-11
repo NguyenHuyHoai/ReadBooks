@@ -14,9 +14,6 @@
             android:id="@+id/action_explore_fragment_to_detail_fragment"
             app:destination="@id/detail_fragment" />
         <action
-            android:id="@+id/action_explore_fragment_to_listbook_fragment"
-            app:destination="@id/listbook_fragment" />
-        <action
             android:id="@+id/action_explore_fragment_to_search_fragment"
             app:destination="@id/search_fragment" />
     </fragment>
@@ -52,6 +49,12 @@
         tools:layout="@layout/fragment_browse"
         >
 
+        <action
+            android:id="@+id/action_browse_fragment_to_changePass_fragment"
+            app:destination="@id/changePass_fragment" />
+        <action
+            android:id="@+id/action_browse_fragment_to_myInformation_fragment"
+            app:destination="@id/myInformation_fragment" />
     </fragment>
 
     <fragment
@@ -68,20 +71,6 @@
         android:label="fragment_filter"
         tools:layout="@layout/fragment_filter"
         >
-        <action
-            android:id="@+id/action_filter_fragment_to_listbook_fragment2"
-            app:destination="@id/listbook_fragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/listbook_fragment"
-        android:name="com.example.readbook.ui.list.ListBook"
-        android:label="fragment_listbook"
-        tools:layout="@layout/fragment_list_book"
-        >
-        <action
-            android:id="@+id/action_listbook_fragment_to_filter_fragment"
-            app:destination="@id/filter_fragment" />
     </fragment>
 
     <activity
@@ -104,5 +93,22 @@
             app:destination="@id/detail_fragment" />
     </fragment>
 
+    <fragment
+        android:id="@+id/changePass_fragment"
+        android:name="com.example.readbook.ui.browse.changePass.ChangePassFragment"
+        android:label="fragment_changePass"
+        tools:layout="@layout/fragment_change_pass"
+        >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/myInformation_fragment"
+        android:name="com.example.readbook.ui.browse.myAcc.InformationFragment"
+        android:label="fragment_myInformation"
+        tools:layout="@layout/fragment_information"
+        >
+
+    </fragment>
 
 </navigation>

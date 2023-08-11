@@ -33,4 +33,39 @@
     <string name="title_disconnected">Không có kết nối Internet</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="tv_Input_Email">Nhập Email</string>
+    <string name="tv_Input_Pass">Nhập Mật Khẩu</string>
+    <string name="tv_Login">Đăng Nhập</string>
+    <string name="tv_Register">Tạo tài khoản mới</string>
+    <string name="tv_ForgotPass">Bạn quên mật khẩu ư?</string>
+    <string name="tv_Pass">Mật Khẩu</string>
+    <string name="tv_User">Tên Tài Khoản</string>
+    <string name="tv_RPass">Xác Nhận Mật Khẩu</string>
+    <string name="tv_Sent">Gửi</string>
+    <string name="tv_File">Hồ Sơ</string>
+    <string name="tv_EditProfile">Sửa Thông Tin</string>
+
+    <string name="cb_pass">Hiện mật khẩu</string>
+    <string name="tv_Opass">Nhập mật khẩu cũ</string>
+    <string name="tv_Npass">Nhập mật khẩu mới</string>
+    <string name="tv_RNpass">Xác nhận mật khẩu mới </string>
+    <string name="tv_ChangePass">Đổi mật khẩu</string>
+
+    <string name="tv_UpdateUser">Cập Nhật Thông Tin Người Dùng</string>
+    <string name="tv_usename">Username</string>
+    <string name="tv_permission">Quyền</string>
+    <string name="tv_verification">Xác minh</string>
+    <string name="tv_status">Trạng thái</string>
+    <string name="tv_image">Ảnh</string>
+
+    <string-array name="gender_array">
+        <item>Nam</item>
+        <item>Nữ</item>
+        <item>Khác</item>
+    </string-array>
+
+    <string name="tv_gender">Giới tính</string>
+    <string name="tv_describe">Mô tả</string>
+    <string name="tv_email">Email</string>
 </resources>
