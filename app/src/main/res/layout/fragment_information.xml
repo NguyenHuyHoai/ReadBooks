@@ -9,6 +9,16 @@
         android:orientation="vertical"
         android:background="@color/b_while"
         >
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Hi"
+            android:background="@android:color/transparent"
+            />
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageMP"
             android:layout_width="150dp"

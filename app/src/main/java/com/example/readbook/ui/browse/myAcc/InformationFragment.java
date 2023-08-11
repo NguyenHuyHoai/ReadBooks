@@ -14,6 +14,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.provider.MediaStore;
 import android.text.Editable;
@@ -106,6 +108,13 @@ public class InformationFragment extends Fragment {
                                         public void onClick(View view) {
                                             progressDialog.show();
                                             uploadImageToStorage(avatar);
+                                        }
+                                    });
+                                    binding.btnBack.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            NavController controller = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
+                                            controller.popBackStack();
                                         }
                                     });
                                 }

@@ -11,6 +11,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +24,23 @@ import com.example.readbook.databinding.FragmentDetailBinding;
 import com.example.readbook.databinding.FragmentExploreBinding;
 import com.example.readbook.models.Book;
 import com.example.readbook.ui.chapter.Chapters;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Detail extends Fragment {
     private DetailMV detailViewModel;
     private FragmentDetailBinding binding;
+    private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     private String booksId;
+    private String userId;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,6 +93,27 @@ public class Detail extends Fragment {
         binding.btnRead.setOnClickListener(v -> navigateToChapterList());
     }
     private void navigateToChapterList() {
+        firebaseFirestore.collection("Books")
+                .document(booksId)
+                .update("viewsCount", FieldValue.increment(1));
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            userId = currentUser.getUid();
+            firebaseFirestore.collection("Users")
+                    .document(userId)
+                    .update("recentlyViewedBooks", FieldValue.arrayUnion(binding.tvBookName.getText().toString()));
+        }
+
+        // Lưu thông tin vào collection "HistoryBooks"
+        Map<String, Object> historyData = new HashMap<>();
+        historyData.put("userId", userId);
+        historyData.put("booksId", booksId);
+        historyData.put("timeView", FieldValue.serverTimestamp());
+
+        firebaseFirestore.collection("HistoryBooks")
+                .add(historyData);
+
         Bundle bundle = new Bundle();
         bundle.putString("booksId", booksId);
         requireActivity().startActivity(new Intent(requireActivity(), Chapters.class).putExtras(bundle));

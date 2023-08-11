@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.text.Editable;
 import android.text.InputType;
@@ -76,6 +78,14 @@ public class ChangePassFragment extends Fragment {
         });
         updatePasswordVisibility(binding.cbShowpass.isChecked());
         setupButton();
+
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController controller = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
+                controller.popBackStack();
+            }
+        });
 
         return binding.getRoot();
     }
