@@ -22,8 +22,18 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/book_follow_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/notify"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Chưa có sách yêu thích nào !"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:visibility="gone"
+            />
 
     </LinearLayout>
 

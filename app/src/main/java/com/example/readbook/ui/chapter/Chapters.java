@@ -32,6 +32,8 @@ public class Chapters extends AppCompatActivity {
     private ActivityChaptersBinding binding;
     private ChapterMV chapterViewModel;
     private String booksId;
+
+    private String chaptersName;
     private int maxChapter;
     private Chapter currentChapter;
     private int currentChapterNumber = 1;
@@ -58,6 +60,7 @@ public class Chapters extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             booksId = extras.getString("booksId");
+            chaptersName = extras.getString("chaptersName");
         }
         chapterViewModel = new ViewModelProvider(this).get(ChapterMV.class);
     }
@@ -77,7 +80,7 @@ public class Chapters extends AppCompatActivity {
                 Toast.makeText(this, "Không tìm thấy truyện", Toast.LENGTH_SHORT).show();
             }
         });
-        chapterViewModel.getChapter(booksId, "Chương 1"); // Lấy chương đầu tiên khi mở activity
+        chapterViewModel.getChapter(booksId, chaptersName); // Lấy chương đầu tiên khi mở activity
     }
     private int getMaxChapterNumber(String chapterName) {
         // Tách số chương từ tên chương (vd: Chương 1 -> 1)

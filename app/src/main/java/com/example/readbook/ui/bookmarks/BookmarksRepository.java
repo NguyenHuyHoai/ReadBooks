@@ -1,8 +1,11 @@
 package com.example.readbook.ui.bookmarks;
 
+import android.view.View;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.readbook.databinding.FragmentBookmarksBinding;
 import com.example.readbook.models.Book;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -14,6 +17,7 @@ import java.util.List;
 
 public class BookmarksRepository {
 
+    private FragmentBookmarksBinding binding;
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     private FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
     private MutableLiveData<List<Book>> bookmarksLiveData = new MutableLiveData<>();
@@ -28,7 +32,11 @@ public class BookmarksRepository {
                     .addOnSuccessListener(documentSnapshot -> {
                         if (documentSnapshot.exists()) {
                             List<String> followedBooks = (List<String>) documentSnapshot.get("followedBooks");
-                            fetchBooksData(followedBooks);
+                            if (followedBooks != null && !followedBooks.isEmpty()) {
+                                fetchBooksData(followedBooks);
+                            } else {
+                                
+                            }
                         }
                     })
                     .addOnFailureListener(e -> {

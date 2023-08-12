@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,7 +28,10 @@ import com.example.readbook.models.Book;
 import com.example.readbook.models.Users;
 import com.example.readbook.ui.browse.login.Login;
 import com.example.readbook.ui.chapter.Chapters;
+import com.example.readbook.ui.detail.tablayout.ViewPagerAdapter;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -57,6 +61,25 @@ public class Detail extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loadData();
+        ViewPager2 viewPager2 = binding.viewPager;
+        TabLayout tabLayout = binding.tabLayout;
+
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(requireActivity(), booksId);
+        viewPager2.setAdapter(viewPagerAdapter);
+
+        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
+            switch (position) {
+                case 0:
+                    tab.setText("Giới thiệu");
+                    break;
+                case 1:
+                    tab.setText("Bình luận");
+                    break;
+                case 2:
+                    tab.setText("D.S Chương");
+                    break;
+            }
+        }).attach();
         setUpObservers();
         loadFollowStatus();
         setUpListeners();
@@ -126,6 +149,7 @@ public class Detail extends Fragment {
                     RequestManager requestManager = Glide.with(this);
                     requestManager.load(book.getImageBook()).into(binding.imageBook);
                     binding.tvBookName.setText(book.getTitle());
+
                     ArrayList<String> genresList = (ArrayList<String>) book.getGenres();
                     String genresString = TextUtils.join(", ", genresList);
                     binding.tvGenres.setText(genresString);
@@ -208,6 +232,7 @@ public class Detail extends Fragment {
                     // Mở Fragment Chapters hoặc thực hiện hành động khác
                     Bundle bundle = new Bundle();
                     bundle.putString("booksId", booksId);
+                    bundle.putString("chaptersName", "Chương 1");
                     requireActivity().startActivity(new Intent(requireActivity(), Chapters.class).putExtras(bundle));
                 })
                 .addOnFailureListener(e -> {

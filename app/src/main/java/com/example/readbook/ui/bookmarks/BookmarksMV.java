@@ -25,13 +25,10 @@ public class BookmarksMV extends ViewModel {
     public void removeFromFollowedBooks(String bookId) {
         if (currentUser != null) {
             String userId = currentUser.getUid();
-            Log.d("BookmarksMV", "Removing bookId: " + bookId + " for userId: " + userId);
 
             firebaseFirestore.collection("Users")
                     .document(userId)
-                    .update("followedBooks", FieldValue.arrayRemove(bookId))
-                    .addOnSuccessListener(aVoid -> Log.d("BookmarksMV", "Book removed successfully"))
-                    .addOnFailureListener(e -> Log.e("BookmarksMV", "Error removing book", e));
+                    .update("followedBooks", FieldValue.arrayRemove(bookId));
         }
     }
 }

@@ -77,13 +77,9 @@ public class BookmarksFragment extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
-                // Handle book swipe event
                 if (adapter != null) {
-                    // Handle book swipe event
                     Book book = adapter.getBookAtPosition(position);
-                    // Remove the book at the swiped position from the user's followedBooks list in Firestore
                     bookmarksViewModel.removeFromFollowedBooks(book.booksId);
-                    // Remove the book from the adapter
                     adapter.removeBookAtPosition(position);
                 }
             }
