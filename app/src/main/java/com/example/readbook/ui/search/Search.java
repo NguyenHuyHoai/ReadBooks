@@ -41,7 +41,13 @@ public class Search extends Fragment implements SearchAdapter.OnSearchItemClickL
         binding.bookSearchList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         buildRecyclerView();
-
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController controller = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
+                controller.popBackStack();
+            }
+        });
         return binding.getRoot();
     }
 
@@ -59,7 +65,8 @@ public class Search extends Fragment implements SearchAdapter.OnSearchItemClickL
                 public boolean onQueryTextChange(String newText) {
                     List<Book> filteredlist = new ArrayList<>();
                     for (Book item : bookslist) {
-                        if (item.getTitle().toLowerCase().contains(newText.toLowerCase())) {
+                        if (item.getTitle().toLowerCase().contains(newText.toLowerCase())||
+                                item.getAuthor().toLowerCase().contains(newText.toLowerCase())) {
                             filteredlist.add(item);
                         }
                     }
@@ -71,15 +78,10 @@ public class Search extends Fragment implements SearchAdapter.OnSearchItemClickL
                     return false;
                 }
             });
-            binding.btnBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    NavController controller = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
-                    controller.popBackStack();
-                }
-            });
         });
     }
+
+
 
     @Override
     public void OnSearchItemClick(Book book) {

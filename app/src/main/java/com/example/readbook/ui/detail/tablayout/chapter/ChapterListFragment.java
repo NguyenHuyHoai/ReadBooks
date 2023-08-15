@@ -59,21 +59,14 @@ public class ChapterListFragment extends Fragment {
 
         ChapterListAdapter adapter = new ChapterListAdapter();
         binding.bookChapterList.setAdapter(adapter);
-
-        // Ví dụ thiết lập LayoutManager cho RecyclerView (chỉ là ví dụ, bạn cần thay thế bằng thực tế của bạn)
         binding.bookChapterList.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-        // Bắt sự kiện click trên chương
         adapter.setOnChapterClickListener(chapter -> {
-            // Mở fragment Chapters để xem nội dung của chương
             openChapterFragment(chapter);
         });
 
-        // Khởi tạo ViewModel và gọi phương thức loadChapters
         viewModel = new ViewModelProvider(this).get(ChapterListViewModel.class);
         viewModel.loadChapters(booksId);
-
-        // Theo dõi LiveData để cập nhật danh sách chương
         viewModel.getChapterListLiveData().observe(getViewLifecycleOwner(), chapters -> {
             adapter.setChapterList(chapters);
         });

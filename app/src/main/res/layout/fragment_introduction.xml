@@ -1,14 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.detail.tablayout.IntroductionFragment">
+    tools:context=".ui.detail.tablayout.introduction.IntroductionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/twentyDP"
+            >
 
-</FrameLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/mottramDP"
+                android:gravity="center_vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/view"
+                    >
+
+                    <TextView
+                        android:id="@+id/countView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:gravity="center"
+                        />
+
+                    <TextView
+                        android:layout_marginTop="@dimen/twentyDP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lượt xem"
+                        android:textSize="21sp"
+                        />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="@dimen/mottramDP"
+                    android:layout_height="@dimen/mottramDP"
+                    android:layout_toEndOf="@+id/view"
+                    android:layout_marginStart="@dimen/thirtyDP"
+                    >
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/btnRating"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_star"
+                        android:contentDescription="Hi"
+                        android:background="@android:color/transparent"
+                        />
+
+                    <TextView
+                        android:id="@+id/Rating"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="5.0"
+                        android:gravity="center"
+                        />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/rating"
+                    android:layout_alignParentEnd="true"
+                    >
+
+                    <TextView
+                        android:id="@+id/countRating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:gravity="center"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lượt đánh giá"
+                        android:textSize="21sp"
+                        android:layout_marginTop="@dimen/twentyDP"
+                        />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/twentyDP"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

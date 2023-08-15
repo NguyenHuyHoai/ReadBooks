@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/tvIcon"
-            android:text="Lịch sử đọc truyện"
+            android:text="Lịch sử đọc sách"
             android:textSize="20sp"
             android:background="@color/white"
             android:padding="@dimen/tenDP"

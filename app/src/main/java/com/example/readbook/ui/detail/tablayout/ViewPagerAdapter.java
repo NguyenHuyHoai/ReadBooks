@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.readbook.ui.detail.tablayout.chapter.ChapterListFragment;
+import com.example.readbook.ui.detail.tablayout.comment.CommentFragment;
+import com.example.readbook.ui.detail.tablayout.introduction.IntroductionFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
 

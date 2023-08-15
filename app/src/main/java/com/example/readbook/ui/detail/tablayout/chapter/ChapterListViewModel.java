@@ -24,7 +24,7 @@ public class ChapterListViewModel extends ViewModel {
     public void loadChapters(String booksId) {
         db.collection("Chapters")
                 .whereEqualTo("booksId", booksId)
-                .orderBy("chaptersName", Query.Direction.ASCENDING) // Thêm yêu cầu sắp xếp theo chaptersName
+                .orderBy("chaptersName", Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
                     List<Chapter> chapters = new ArrayList<>();

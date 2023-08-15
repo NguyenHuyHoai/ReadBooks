@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,7 @@ public class LoginMV {
     public LoginMV(Context context, ProgressDialog progressDialog, ActivityLoginBinding binding) {
         this.context = context;
         this.progressDialog = progressDialog;
+        this.binding = binding;
     }
 
     public void onLoginClicked(String email, String password) {
@@ -93,6 +95,8 @@ public class LoginMV {
                                 if (document != null && document.exists()) {
                                     boolean isAdmin = document.getBoolean("admin");
                                     boolean isLocked = document.getBoolean("locked");
+
+                                    Log.e("KHOA", String.valueOf(isLocked));
 
                                     if (isLocked) {
                                         binding.tvError.setText("");
