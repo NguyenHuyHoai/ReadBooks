@@ -22,7 +22,9 @@ import android.view.ViewGroup;
 import com.example.readbook.R;
 import com.example.readbook.databinding.FragmentExploreBinding;
 import com.example.readbook.models.Book;
+import com.example.readbook.ui.chapter.Chapters;
 import com.example.readbook.ui.explore.banner.BannerAdapter;
+import com.example.readbook.ui.list.ListBooks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +72,11 @@ public class ExploreFragment extends Fragment {
         exploreViewModel.getTrendingBooksLiveData().observe(getViewLifecycleOwner(), this::setUpTrendingBooksAdapter);
         exploreViewModel.getBannerBooksLiveData().observe(getViewLifecycleOwner(),this::setUpBannerBookAdapter);
         binding.btnSearchHome.setOnClickListener(v -> navigateToSearch());
+        binding.btnFilterlistHome.setOnClickListener(view1 -> navigateToFilter());
+    }
 
+    private void navigateToFilter() {
+        requireActivity().startActivity(new Intent(requireActivity(), ListBooks.class));
     }
 
     private void setUpBannerBookAdapter(List<Book> bannerBooks) {

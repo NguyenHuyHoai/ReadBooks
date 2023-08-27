@@ -64,9 +64,11 @@ public class Search extends Fragment implements SearchAdapter.OnSearchItemClickL
                 @Override
                 public boolean onQueryTextChange(String newText) {
                     List<Book> filteredlist = new ArrayList<>();
+                    String lowerCaseQuery = newText.toLowerCase();
                     for (Book item : bookslist) {
                         if (item.getTitle().toLowerCase().contains(newText.toLowerCase())||
-                                item.getAuthor().toLowerCase().contains(newText.toLowerCase())) {
+                                item.getAuthor().toLowerCase().contains(newText.toLowerCase()) ||
+                                containsGenre(item.getGenres(), lowerCaseQuery)) {
                             filteredlist.add(item);
                         }
                     }
@@ -74,6 +76,14 @@ public class Search extends Fragment implements SearchAdapter.OnSearchItemClickL
                         searchAdapter.filterList(filteredlist);
                     } else {
                         searchAdapter.filterList(filteredlist);
+                    }
+                    return false;
+                }
+                private boolean containsGenre(List<String> genres, String query) {
+                    for (String genre : genres) {
+                        if (genre.toLowerCase().contains(query)) {
+                            return true;
+                        }
                     }
                     return false;
                 }

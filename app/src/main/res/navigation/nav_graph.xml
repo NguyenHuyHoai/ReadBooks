@@ -67,7 +67,7 @@
 
     <fragment
         android:id="@+id/filter_fragment"
-        android:name="com.example.readbook.ui.filter.Filter"
+        android:name="com.example.readbook.ui.list.filter.Filter"
         android:label="fragment_filter"
         tools:layout="@layout/fragment_filter"
         >
